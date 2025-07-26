@@ -1,0 +1,123 @@
+/* Make sure the page layout is flexible and scrollable */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #00a0fd;
+  color: white;
+  font-family: 'Press Start 2P', monospace;
+  padding-top: 64px; /* space for fixed header */
+}
+
+/* Frame should not force overflow */
+.frame {
+  margin-top: 0.2rem;
+  padding: 2rem;
+  background-color: #202020;
+  flex: 1;
+}
+
+.text-box {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 1rem;
+  border: 4px solid #444;
+  margin-bottom: 1rem;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  box-shadow:
+    0 0 100px 4px rgba(32, 233, 42, 0.7),     
+    inset -3px -3px 0 #aaa,                 
+    inset 3px 3px 0 #ddd;                   
+}
+
+.text-box-work{
+  background-color: #5e5c5c;
+  color: #000000;
+  padding: 1rem;
+  border: 4px solid #444;
+  margin-bottom: 1rem;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  box-shadow:
+    0 0 40px 4px rgba(252, 214, 1, 0.7),     
+    inset -3px -3px 0 #5e5c5c,                 
+    inset 3px 3px 0 #5e5c5c;                   
+}
+
+
+/* Footer styles (optional: push to bottom if space) */
+footer {
+  padding: 1rem;
+  text-align: center;
+  background-color: #000;
+}
+
+.button-row {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Pixel-style button */
+.profile-button {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
+  color: #444;
+  background-color: rgb(166, 162, 162);
+  padding: 0.6rem 1cm;
+  border: 4px solid;
+  border-color: #2f2f5f #0f0f3f #0f0f3f #2f2f5f;
+  outline: 3px solid #6e78c2;
+  box-shadow: inset -2px -2px 0 rgb(166, 162, 162), inset 2px 2px 0 rgb(166, 162, 162);
+  cursor: pointer;
+  text-shadow: 2px 1px #ccc;
+  transition: transform 0.1s ease;
+  margin-top: 1rem;
+  image-rendering: pixelated;
+  margin-left: 1rem;
+  margin-right: 0.3rem;
+  ;
+}
+
+.profile-button:hover {
+  transform: scale(1.05);
+}
+
+.selected-button {
+  background-color: #ffffff;   
+  color: black;       
+  border-color: #2f2f5f #0f0f3f #0f0f3f #2f2f5f;
+  box-shadow: inset -2px -2px 0 #c0b8c0, inset 2px 2px 0 #dcd0e0;
+  transform: scale(1.05);   
+}
+
+.work-text {
+  line-height: 1.5; /* double spacing between lines */
+  font-size: 0.75rem;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 1.5px #000000;
+}
+
+.job-block {
+  margin-bottom: 2rem; /* extra space between job sections */
+}
+
+.job-block ul {
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+.job-block li {
+  margin-bottom: 1rem; /* spacing between each bullet */
+}
+
+.work-text hr {
+  border: none;
+  border-top: 2px dashed #5106ff;
+  margin: 2rem 0;
+  
+}
