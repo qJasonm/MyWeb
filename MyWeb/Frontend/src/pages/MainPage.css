@@ -18,14 +18,17 @@
 }
 
 .askme-frame {
-  margin-top: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   padding: 2rem;
-  flex: auto;
-
-  /* Simulate pixelation */
+  background-color: #e4e3e1;
+  border-top: #979797 4px solid;
   image-rendering: pixelated;
-  background-size: 20px 20px; /* Adjust for coarser or finer pixel effect */
+  background-size: 20px 20px;
+  min-height: 0; /* Important for flex children to shrink properly */
 }
+
 
 .text-box {
   background-color: #ffffff;
@@ -132,13 +135,13 @@ footer {
 
 .chat-box {
   width: 100%;
-  flex: 1;   /* ✅ Take up available space */
+  flex: 1; 
   resize: none;
   overflow-y: auto;
   padding: 8px;
   border: 1px solid #ccc;
   background-color: #fff;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   line-height: 1.5;
   box-shadow: inset -2px -2px 0 #4e4e4e, inset 2px 2px 0 #9c9c9c;
   max-height: calc(1.5em * 3 + 16px);
@@ -150,9 +153,36 @@ footer {
 
 .chat-input-container {
   display: flex;
+  
   align-items: flex-end;
   margin: 0 2rem;
   gap: 0.5rem;
+}
+
+.askme-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 600px; /* Set a fixed height or max height */
+  margin-right: 5rem; /* Adjust as needed */
+}
+
+.askme-content::-webkit-scrollbar {
+  width: 6px;
+}
+.askme-content::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+.askme-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.input-wrapper {
+  margin-top: auto;
 }
 
 
@@ -170,12 +200,45 @@ footer {
   cursor: pointer;
   transition: all 0.1s ease;
   image-rendering: pixelated;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 
 .send-button:active{
   transform: translate(2px, 2px);
   border-color: #0a0a0a #e2dbdb #d1c7c7 #000000;
+}
+
+.askme-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.message-bubble {
+  max-width: 80%;
+  padding: 0.6rem 1rem;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
+  line-height: 1.3;
+  border: 3px solid #444;
+  background-color: #fff;
+  color: #000;
+  box-shadow: inset -2px -2px 0 #ccc, inset 2px 2px 0 #eee;
+}
+
+.user-message {
+  align-self: flex-end;
+  background-color: #ffffff;
+  border-color: #010101;
+}
+
+.agent-message {
+  align-self: flex-start;
+  background-color: #d2d2ff;
+  border-color: #4444aa;
 }
 
 

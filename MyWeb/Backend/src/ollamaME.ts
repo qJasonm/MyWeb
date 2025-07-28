@@ -12,25 +12,28 @@ app.use(bodyParser.json());
 const OLLAMA_URL = 'http://localhost:11434';
 
 app.post('/api/chat', async (req, res) => {
-  const { prompt} = req.body;
+  const { model = 'llama3.2', messages } = req.body;
 
-  if (!prompt ) {
-    return res.status(400).json({ error: 'Missing prompt' });
+  if (!messages || !Array.isArray(messages)) {
+    return res.status(400).json({ error: 'Missing or invalid messages array' });
   }
 
   try {
-    const response = await axios.post(`${OLLAMA_URL}/api/generate`, {
-      model: 'JMA',
-      prompt,
+    const response = await axios.post(`${OLLAMA_URL}/api/chat`, {
+      model : "JMA",
+      messages,
       stream: false,
     });
 
-    res.json({ response: response.data.response });
+    const lastMessage = response.data.message?.content || 'No response.';
+    
+    res.json({ response: lastMessage });
   } catch (error: any) {
     console.error('Ollama error:', error.response?.data || error.message);
     res.status(500).json({ error: 'Ollama request failed' });
   }
 });
+
 
 const PORT = 3001;
 app.listen(PORT, () => {
