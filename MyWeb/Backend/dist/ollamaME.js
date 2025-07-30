@@ -21,21 +21,22 @@ app.use((0, cors_1.default)());
 app.use(body_parser_1.default.json());
 const OLLAMA_URL = 'http://localhost:11434';
 app.post('/api/chat', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
-    const { prompt } = req.body;
-    if (!prompt) {
-        return res.status(400).json({ error: 'Missing prompt' });
+    var _a, _b;
+    const { model = 'llama3.2', messages } = req.body;
+    if (!messages || !Array.isArray(messages)) {
+        return res.status(400).json({ error: 'Missing or invalid messages array' });
     }
     try {
-        const response = yield axios_1.default.post(`${OLLAMA_URL}/api/generate`, {
-            model: 'JMA',
-            prompt,
+        const response = yield axios_1.default.post(`${OLLAMA_URL}/api/chat`, {
+            model: "JMA",
+            messages,
             stream: false,
         });
-        res.json({ response: response.data.response });
+        const lastMessage = ((_a = response.data.message) === null || _a === void 0 ? void 0 : _a.content) || 'No response.';
+        res.json({ response: lastMessage });
     }
     catch (error) {
-        console.error('Ollama error:', ((_a = error.response) === null || _a === void 0 ? void 0 : _a.data) || error.message);
+        console.error('Ollama error:', ((_b = error.response) === null || _b === void 0 ? void 0 : _b.data) || error.message);
         res.status(500).json({ error: 'Ollama request failed' });
     }
 }));
