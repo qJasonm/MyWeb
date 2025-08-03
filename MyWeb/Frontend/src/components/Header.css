@@ -71,11 +71,13 @@
   font-size: 12px;
   padding: 0.2rem 0.5rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   cursor: pointer;
   transition: all 0.1s ease;
   image-rendering: pixelated;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
+  align-items: center;
+  display: flex;
 }
 
 .pixel-button:hover {

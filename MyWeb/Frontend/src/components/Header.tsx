@@ -38,7 +38,7 @@ const Header = () => {
         <a href="https://game.qjasonma.com"
            target="_blank"
            className="pixel-button">
-            Retro Games
+            Fish Stock Report
         </a>
         <Link to="/contact" className="pixel-button">Contact</Link>
       </nav>
