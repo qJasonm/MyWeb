@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  myweb-frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    environment:
+      - VITE_OLLAMA_URL=${VITE_OLLAMA_URL}
+    networks: [myweb-net]
+
+  myweb-backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    environment:
+      - PORT=${PORT}
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
+      - FRONTEND_ORIGIN=${FRONTEND_ORIGIN}
+    expose:
+      - "3001"  # internal only
+    networks: [myweb-net]
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    env_file: .env
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
+    depends_on:
+      - myweb-frontend
+      - myweb-backend
+    networks: [myweb-net]
+
+networks:
+  myweb-net:
+    driver: bridge
