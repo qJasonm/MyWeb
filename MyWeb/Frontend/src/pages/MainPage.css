@@ -268,3 +268,24 @@ footer {
 
 
 
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 8px;
+}
+
+.message-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.agent-row {
+  flex-direction: row; /* avatar on the left */
+}
+
+.user-row {
+  flex-direction: row-reverse; /* user messages on the right */
+}
